@@ -1,8 +1,18 @@
 import React from 'react';
 
-export default function Todo({ item }) {
-  console.log(item);
+export default function Todo({ item, deleteItem }) {
+  //   console.log(item);
   const { id, title, done } = item;
+
+  const onDeleteBtnClick = () => {
+    console.log(done);
+    if (done) {
+      deleteItem(id);
+    } else {
+      console.log('unchecked');
+    }
+  };
+
   return (
     <div>
       <input
@@ -12,6 +22,7 @@ export default function Todo({ item }) {
         defaultChecked={done}
       />
       <label htmlFor={`todo${id}`}>{title}</label>
+      <button onClick={onDeleteBtnClick}>DELETE</button>
     </div>
   );
 }
