@@ -36,7 +36,11 @@ function App() {
 
   const deleteItem = (deleteItemId) => {
     console.log(deleteItemId);
-    todoItems.filter((todoItems) => todoItems.id != deleteItemId);
+    const newTodoItems = todoItems.filter(
+      (todoItem) => todoItem.id != deleteItemId
+    );
+    setTodoItems(newTodoItems);
+    console.log(todoItems);
   };
   return (
     <div className="App">
