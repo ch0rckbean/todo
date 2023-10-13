@@ -3,10 +3,11 @@
 
 .addTodoDiv {
   .cmt {
-    background-image: $color-gradient;
+    background-color: $color-cmtBg;
     width: 100%;
     height: 100px;
     @include txt(60px);
+    color: $color-btnTxt;
   }
   input {
     @include input(10px);

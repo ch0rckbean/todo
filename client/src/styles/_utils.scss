@@ -17,7 +17,8 @@
 }
 
 @mixin txt($size) {
-  color: $color-txt;
+  //   color: $color-txt;
+  color: #60ae6d;
   font-size: $size;
   font-family: Arial, Helvetica, sans-serif;
 }
