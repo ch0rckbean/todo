@@ -34,17 +34,35 @@ function App() {
     // console.log(res);
   };
 
-  const deleteItem = (targetItem) => {
-    console.log(targetItem);
+  // DELETE /api/todo/:todoId
+  const deleteItem = async (targetItem) => {
+    // DB에서 삭제
+    await axios.delete(
+      `${process.env.REACT_APP_DB_HOST}/todo/${targetItem.id}`
+    );
+    // 프론트에서 삭제
     const newTodoItems = todoItems.filter((item) => item.id != targetItem.id);
     setTodoItems(newTodoItems);
   };
+
+  const updateItem = async (targetItem) => {
+    await axios.patch(
+      `${process.env.REACT_APP_DB_HOST}/todo/${targetItem.id}`,
+      targetItem
+    );
+  };
+
   return (
     <div className="App">
       <AddTodo addItem={addItem} length={todoItems.length} />
       {/* todoItems 반복, props(todo 객체)로 자식 컴포넌트에 데이터 전달 */}
       {todoItems.map((todoItems, idx) => (
-        <Todo key={idx} item={todoItems} deleteItem={deleteItem} />
+        <Todo
+          key={idx}
+          item={todoItems}
+          deleteItem={deleteItem}
+          updateItem={updateItem}
+        />
       ))}
     </div>
   );
