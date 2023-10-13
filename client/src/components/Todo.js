@@ -1,16 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function Todo({ item, deleteItem }) {
   //   console.log(item);
+  const [todoItem, setTodoItem] = useState(item);
   const { id, title, done } = item;
 
   const onDeleteBtnClick = () => {
-    console.log(done);
-    if (done) {
-      deleteItem(id);
-    } else {
-      console.log('unchecked');
-    }
+    deleteItem(todoItem);
   };
 
   return (
