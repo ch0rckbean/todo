@@ -1,37 +1,37 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Todo from './components/Todo';
 import AddTodo from './components/AddTodo';
+import axios from 'axios';
 
 function App() {
-  const [todoItems, setTodoItems] = useState([
-    {
-      id: 1,
-      title: 'my todo1',
-      done: false,
-    },
-    {
-      id: 2,
-      title: 'my todo2',
-      done: false,
-    },
-    {
-      id: 3,
-      title: 'my todo3',
-      done: true,
-    },
-  ]);
+  // console.log(process.env.REACT_APP_DB_HOST); // http://localhost:8000/api
+  const [todoItems, setTodoItems] = useState([]);
+
+  useEffect(() => {
+    const getTodos = async () => {
+      const res = await axios.get(`${process.env.REACT_APP_DB_HOST}/todos`);
+      setTodoItems(res.data);
+    };
+    getTodos();
+  }, []);
 
   // todoItems 상태에 새로운 Todo 추가
-  const addItem = (newItem) => {
-    console.log(newItem);
+  const addItem = async (newItem) => {
+    // console.log(newItem);
 
-    //newItem id 키 값, newItem done 키 값 추가
-    newItem.id = todoItems.length + 1;
-    newItem.done = false;
+    // //newItem id 키 값, newItem done 키 값 추가
+    // newItem.id = todoItems.length + 1;
+    // newItem.done = false;
 
-    // todoItems 배열에 newItem 추가
-    setTodoItems([...todoItems, newItem]);
+    // // todoItems 배열에 newItem 추가
+    // setTodoItems([...todoItems, newItem]);
+    const res = await axios.post(
+      `${process.env.REACT_APP_DB_HOST}/todo`,
+      newItem
+    );
+    setTodoItems([...todoItems, res.data]);
+    // console.log(res);
   };
 
   const deleteItem = (targetItem) => {
@@ -41,10 +41,10 @@ function App() {
   };
   return (
     <div className="App">
-      <AddTodo addItem={addItem} />
+      <AddTodo addItem={addItem} length={todoItems.length} />
       {/* todoItems 반복, props(todo 객체)로 자식 컴포넌트에 데이터 전달 */}
-      {todoItems.map((todoItems) => (
-        <Todo key={todoItems.id} item={todoItems} deleteItem={deleteItem} />
+      {todoItems.map((todoItems, idx) => (
+        <Todo key={idx} item={todoItems} deleteItem={deleteItem} />
       ))}
     </div>
   );
