@@ -1,0 +1,23 @@
+@import './variables.scss';
+
+@mixin input($size) {
+  padding: $size;
+  margin: $size;
+}
+
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin button() {
+  background-color: $color-btnBg;
+  color: $color-btnTxt;
+  border-radius: 20%;
+}
+
+@mixin txt($size) {
+  color: $color-txt;
+  font-size: $size;
+  font-family: Arial, Helvetica, sans-serif;
+}

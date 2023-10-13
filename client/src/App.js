@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './App.css';
+import './App.scss';
 import Todo from './components/Todo';
 import AddTodo from './components/AddTodo';
 import axios from 'axios';
@@ -41,7 +41,7 @@ function App() {
       `${process.env.REACT_APP_DB_HOST}/todo/${targetItem.id}`
     );
     // 프론트에서 삭제
-    const newTodoItems = todoItems.filter((item) => item.id != targetItem.id);
+    const newTodoItems = todoItems.filter((item) => item.id !== targetItem.id);
     setTodoItems(newTodoItems);
   };
 

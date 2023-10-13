@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/Todo.scss';
 
 export default function Todo({ item, deleteItem, updateItem }) {
   //   console.log(item);
@@ -44,13 +45,14 @@ export default function Todo({ item, deleteItem, updateItem }) {
   };
 
   return (
-    <div>
+    <div className="todoDiv">
       <input
         type="checkbox"
         name={`todo${id}`}
         id={`todo${id}`}
         defaultChecked={done}
         onChange={checkboxEventHandler}
+        className="chkInput"
       />
       {/* <label htmlFor={`todo${id}`}>{title}</label> */}
       <input
@@ -60,8 +62,9 @@ export default function Todo({ item, deleteItem, updateItem }) {
         onClick={offReadOnlyMode}
         onChange={editEventHandler}
         onKeyDown={editKeyEventHandler}
+        className="todoInput"
       />
-      <button onClick={onDeleteBtnClick}>DELETE</button>
+      <button onClick={onDeleteBtnClick}>DEL</button>
     </div>
   );
 }
