@@ -54,6 +54,7 @@ exports.updateTodo = async (req, res) => {
   }
 };
 
+// DELETE /api/todo/:todoId
 exports.deleteTodo = async (req, res) => {
   try {
     let isDeleted = await Todo.destroy({
