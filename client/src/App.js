@@ -53,12 +53,12 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className='App'>
       <AddTodo addItem={addItem} length={todoItems.length} />
       {/* todoItems 반복, props(todo 객체)로 자식 컴포넌트에 데이터 전달 */}
-      {todoItems.map((todoItems, idx) => (
+      {todoItems.map((todoItems) => (
         <Todo
-          key={idx}
+          key={todoItems.id}
           item={todoItems}
           deleteItem={deleteItem}
           updateItem={updateItem}
