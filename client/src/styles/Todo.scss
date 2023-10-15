@@ -1,23 +1,65 @@
 @import './variables.scss';
 @import './utils.scss';
+@import '~include-media/dist/include-media';
 
 .todoDiv {
   background-color: $color-green;
 
-  .chkInput {
-    @include input(10px);
-    @include square(30px);
-    font-size: 25px;
+  @include media('<480px') {
+    .chkInput {
+      @include input(10px);
+      @include square(25px);
+      font-size: 25px;
+    }
+    .todoInput {
+      @include input(10px);
+      width: 50%;
+      height: 25px;
+      font-size: 23px;
+    }
+    button {
+      @include button();
+      @include square(50px);
+      font-size: 20px;
+    }
   }
-  .todoInput {
-    @include input(10px);
-    width: 300px;
-    height: 20px;
-    font-size: 20px;
+
+  @include media('<768px' and '>480px') {
+    .chkInput {
+      @include input(10px);
+      @include square(30px);
+      font-size: 25px;
+    }
+    .todoInput {
+      @include input(10px);
+      width: 300px;
+      height: 20px;
+      font-size: 20px;
+    }
+    button {
+      @include button();
+      @include square(50px);
+      font-size: 20px;
+    }
   }
-  button {
-    @include button();
-    @include square(50px);
-    font-size: 20px;
+
+  // large size
+  @include media('>768px') {
+    .chkInput {
+      @include input(10px);
+      @include square(30px);
+      font-size: 25px;
+    }
+    .todoInput {
+      @include input(10px);
+      width: 60%;
+      height: 25px;
+      font-size: 23px;
+    }
+    button {
+      @include button();
+      @include square(50px);
+      font-size: 20px;
+    }
   }
 }
