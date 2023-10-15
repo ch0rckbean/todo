@@ -3,17 +3,21 @@
 
 .todoDiv {
   background-color: $color-green;
+
   .chkInput {
     @include input(10px);
     @include square(30px);
+    font-size: 25px;
   }
   .todoInput {
     @include input(10px);
     width: 300px;
     height: 20px;
+    font-size: 20px;
   }
   button {
     @include button();
     @include square(50px);
+    font-size: 20px;
   }
 }

@@ -1,5 +1,6 @@
 @import './variables.scss';
 @import './utils.scss';
+@import url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
 
 .addTodoDiv {
   .cmt {
@@ -8,18 +9,23 @@
     height: 100px;
     @include txt(60px);
     color: $color-btnTxt;
+    font-family: 'Hi Melody', sans-serif;
   }
   input {
     @include input(10px);
     width: 400px;
     border: 1px solid $color-txt;
     height: 25px;
+    font-weight: bold;
+    font-size: 30px;
   }
   button {
     @include button();
     @include square(50px);
+    font-size: 20px;
   }
   p {
     @include txt(40px);
+    font-family: 'Hi Melody', sans-serif;
   }
 }
